@@ -33,7 +33,7 @@ Vagrant.configure(2) do |config|
     d.vm.provision :shell, path: "scripts/bootstrap-dev.sh"
     d.vm.provider "virtualbox" do |v|
       v.gui = false
-      v.memory = 2048
+      v.memory = 4096
       v.cpus = 2
       v.customize ["modifyvm", :id, "--audio", "none"]
     end

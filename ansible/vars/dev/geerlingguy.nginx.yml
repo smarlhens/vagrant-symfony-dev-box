@@ -12,8 +12,8 @@ nginx_client_max_body_size: "100m"
 nginx_vhosts:
   - listen: "80"
     server_name: "symfony.local"
-    root: "/var/www/symfony/public"
-    index: "index.php"
+    root: "/var/www/symfony/web"
+    index: "app.php"
     access_log: "/var/log/nginx/symfony_access.log"
     error_log: "/var/log/nginx/symfony_error.log"
     state: "present"
@@ -24,7 +24,7 @@ nginx_vhosts:
         try_files $uri @rewriteapp;
       }
       location @rewriteapp {
-        rewrite ^(.*)$ /index.php/$1 last;
+        rewrite ^(.*)$ /app.php/$1 last;
       }
       location ~ ^/.*\.php(/|$) {
         fastcgi_pass unix:/var/run/php/php7.3-fpm.sock;

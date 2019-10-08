@@ -1,4 +1,4 @@
-# Vagrant dev box for Symfony
+# Vagrant dev box for Symfony 3.x
 
 ## Table of Contents
 
@@ -58,7 +58,7 @@ You need to add ```--provision``` arguments to the command _if the VM was not pr
 
 **Note :** If you are under **Windows** I recommend that you **do not use Git Bash** but the **Cmd**.
 
-Then you will need to connect to the Vagrant virtual machine :
+If you need to connect to the Vagrant virtual machine :
 ```bash
 vagrant ssh dev
 ```
@@ -80,6 +80,8 @@ Documentation :
    ```bash
    composer install
    ```
+   
+   > You need to execute this command from the **host** machine. If you execute this command from the Vagrant virtual machine and you update any file in the symfony folder, the rsync-auto command will destroy the vendors.
 
 ##### Initialize project
 
@@ -112,6 +114,21 @@ Documentation :
 
 The Symfony project is now accessible at [http://10.100.100.100](http://10.100.100.100).
 
+---
+
+##### Usefull commands
+
+1. Stop the vagrant machine
+
+   ```bash
+   vagrant halt
+   ```
+
+1. Destroy the vagrant machine
+
+   ```bash
+   vagrant destroy -f
+   ```
 
 ---
 
@@ -132,3 +149,14 @@ The Symfony project is now accessible at [http://10.100.100.100](http://10.100.1
 
    A [workaround](https://github.com/hashicorp/vagrant/issues/10002#issuecomment-419503397) was found and I implemented it. 
    > This problem may no longer be relevant. Feel free to remove the modifications and test on your environment.
+
+1. Unable to create the cache directory
+   
+   The current workaround I found is to allow www-data (used by web server) to write in the `var` folder :
+   
+   ```bash
+   vagrant ssh dev
+   sudo chmod 777 -R /var/www/symfony/var/
+   ```
+
+   > It may not be the best solution, but it works.

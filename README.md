@@ -6,6 +6,8 @@
   - [Prerequisites](#prerequisites)
   - [Installation](#installation)
   - [Building your development environment](#building-your-development-environment)
+  - [Useful commands](#useful-commands)
+
 - [Known issues](#known-issues)
 
 ---  
@@ -35,6 +37,12 @@ What things you need to install the software and how to install them :
    cd vagrant-symfony-dev-box/
    ```
 
+1. Checkout working branch
+
+   ```bash
+   git checkout <branch>
+   ```
+
 1. Copy your **Symfony** project *(src, bin, assets, etc.)* inside the `symfony` folder
 
 1. Check the virtualhost in `ansible/vars/dev/geerlingguy.nginx.yml`
@@ -43,7 +51,7 @@ What things you need to install the software and how to install them :
 
 1. If you want to change **PHP** version, you need to edit `ansible/vars/dev/geerlingguy.php-versions.yml`
 
-1. If you want to change NodeJS version or add new packages you need to edit `ansible/vars/dev/geerlingguy.nodejs.yml`
+1. If you want to change **NodeJS** version or add new packages you need to edit `ansible/vars/dev/geerlingguy.nodejs.yml`
 
 ### Building your development environment
 
@@ -114,7 +122,7 @@ The Symfony project is now accessible at [http://10.100.100.100](http://10.100.1
 
 ---
 
-##### Usefull commands
+### Useful commands
 
 1. Stop the vagrant machine
 

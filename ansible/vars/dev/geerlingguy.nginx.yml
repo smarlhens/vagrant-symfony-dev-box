@@ -1,0 +1,39 @@
+nginx_remove_default_vhost: true
+nginx_worker_connections: "2048"
+nginx_multi_accept: "on"
+nginx_error_log: "/var/log/nginx/error.log warn"
+nginx_access_log: "/var/log/nginx/access.log main buffer=16k"
+nginx_sendfile: "on"
+nginx_tcp_nopush: "on"
+nginx_tcp_nodelay: "on"
+nginx_keepalive_timeout: "15"
+nginx_server_tokens: "off"
+nginx_client_max_body_size: "100m"
+nginx_vhosts:
+  - listen: "80"
+    server_name: "symfony.local"
+    root: "/var/www/symfony/public"
+    index: "index.php"
+    access_log: "/var/log/nginx/symfony_access.log"
+    error_log: "/var/log/nginx/symfony_error.log"
+    state: "present"
+    template: "{{ nginx_vhost_template }}"
+    filename: "symfony.conf"
+    extra_parameters: |
+      location / {
+        try_files $uri @rewriteapp;
+      }
+      location @rewriteapp {
+        rewrite ^(.*)$ /index.php/$1 last;
+      }
+      location ~ ^/.*\.php(/|$) {
+        fastcgi_pass unix:/var/run/php/php7.3-fpm.sock;
+        fastcgi_split_path_info ^(.+\.php)(/.*)$;
+        include fastcgi_params;
+        fastcgi_param SCRIPT_FILENAME $realpath_root$fastcgi_script_name;
+        fastcgi_param DOCUMENT_ROOT $realpath_root;
+        fastcgi_param HTTPS off;
+      }
+      add_header X-Frame-Options SAMEORIGIN;
+      add_header X-Content-Type-Options nosniff;
+      add_header X-XSS-Protection "1; mode=block";

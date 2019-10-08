@@ -1,0 +1,31 @@
+-   name: JQ is present
+    apt:
+        name: jq
+        force: yes
+    tags: [common]
+
+-   name: Host is present
+    lineinfile:
+        dest: /etc/hosts
+        regexp: "^{{ item.host_ip }}"
+        line: "{{ item.host_ip }} {{ item.host_name }}"
+    with_items: "{{ hosts }}"
+    tags: [common]
+
+-   name: curl is present
+    apt:
+        name: curl
+        force: yes
+    tags: [common, jenkins]
+
+-   name: Add swap file to avoid out of memory
+    shell: /bin/dd if=/dev/zero of=/var/swap.1 bs=1M count=1024
+    tags: [swap, composer]
+
+-   name: Add swap file to avoid out of memory
+    shell: /sbin/mkswap /var/swap.1
+    tags: [swap, composer]
+
+-   name: Add swap file to avoid out of memory
+    shell: /sbin/swapon /var/swap.1
+    tags: [swap, composer]

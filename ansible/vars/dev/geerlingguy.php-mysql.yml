@@ -1,0 +1,1 @@
+php_mysql_package: 'php{{ php_version }}-mysql'

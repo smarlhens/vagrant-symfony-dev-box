@@ -1,0 +1,14 @@
+php_enable_webserver: false
+php_default_version_debian: '{{ php_version }}'
+php_packages_state: "present"
+php_install_recommends: true
+php_executable: "php"
+php_memory_limit: "1024M"
+php_enable_php_fpm: true
+__php_webserver_daemon: "nginx"
+php_fpm_listen: "/var/run/php/php{{ php_version }}-fpm.sock"
+php_fpm_listen_allowed_clients: "127.0.0.1"
+php_packages_extra:
+  - 'php{{ php_version }}-zip'
+php_date_timezone: "Europe/Paris"
+php_use_managed_ini: true

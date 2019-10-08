@@ -1,0 +1,22 @@
+-   hosts: dev
+    remote_user: vagrant
+    sudo: yes
+    vars_files:
+        - vars/dev/geerlingguy.nginx.yml
+        - vars/dev/geerlingguy.mysql.yml
+        - vars/dev/geerlingguy.php-versions.yml
+        - vars/dev/geerlingguy.php.yml
+        - vars/dev/geerlingguy.php-mysql.yml
+        - vars/dev/geerlingguy.composer.yml
+        - vars/dev/geerlingguy.nodejs.yml
+        - vars/dev/geerlingguy.git.yml
+    roles:
+        - common
+        - geerlingguy.nginx
+        - geerlingguy.mysql
+        - geerlingguy.php-versions
+        - geerlingguy.php
+        - geerlingguy.php-mysql
+        - geerlingguy.composer
+        - geerlingguy.nodejs
+        - geerlingguy.git

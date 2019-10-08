@@ -1,0 +1,2 @@
+[dev]
+10.100.100.100 ansible_user=vagrant

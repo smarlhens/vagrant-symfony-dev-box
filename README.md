@@ -1,4 +1,4 @@
-# Vagrant dev box for Symfony
+# Vagrant dev box for Symfony 4.x
 
 ## Table of Contents
 
@@ -58,7 +58,7 @@ You need to add ```--provision``` arguments to the command _if the VM was not pr
 
 **Note :** If you are under **Windows** I recommend that you **do not use Git Bash** but the **Cmd**.
 
-Then you will need to connect to the Vagrant virtual machine :
+If you need to connect to the Vagrant virtual machine :
 ```bash
 vagrant ssh dev
 ```
@@ -112,6 +112,21 @@ Documentation :
 
 The Symfony project is now accessible at [http://10.100.100.100](http://10.100.100.100).
 
+---
+
+##### Usefull commands
+
+1. Stop the vagrant machine
+
+   ```bash
+   vagrant halt
+   ```
+
+1. Destroy the vagrant machine
+
+   ```bash
+   vagrant destroy -f
+   ```
 
 ---
 

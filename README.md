@@ -1,5 +1,9 @@
 # Vagrant dev box for Symfony 4.x
 
+<p align="center">
+  <img src="https://github.com/smarlhens/vagrant-symfony-dev-box/blob/symfony-4.x/doc/vagrant-symfony-dev-box.png" width="620" alt="docker-symfony"/>
+</p>
+
 ## Table of Contents
 
 - [Getting Started](#getting-started)

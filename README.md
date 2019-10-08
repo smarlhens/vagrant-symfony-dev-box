@@ -89,6 +89,8 @@ Documentation :
    composer install
    ```
 
+   > You need to execute this command from the **host** machine. If you execute this command from the Vagrant virtual machine and you update any file in the symfony folder, the rsync-auto command will destroy the vendors.
+
 ##### Initialize project
 
 1. Create database schema
@@ -103,7 +105,7 @@ Documentation :
    php bin/console doctrine:migrations:migrate
    ```
 
-1. *You can execute all the commands necessary to initialize your   project now. Each project has its own command list and I only present the basic requirements.*
+1. *You can execute all the commands necessary to initialize your project now. Each project has its own command list and I only present the basic requirements.*
 
 1. Clear cache
 
